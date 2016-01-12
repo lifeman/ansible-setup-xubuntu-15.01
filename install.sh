@@ -1,5 +1,7 @@
 CURRENT=`pwd`
-SETUPDIR=".config-desktop-xubuntu"
+SETUPDIR="._xubuntu-setup"
+#wget -O - https://raw.githubusercontent.com/lifeman/ansible-setup-xubuntu/master/install.sh | bash
+
 if [ ! -d ~/"$SETUPDIR" ]
 then
     echo "\033[0;32m Installation de python.......\033[0m"
@@ -14,6 +16,6 @@ else
     echo "\033[0;32mThe folder $SETUPDIR is already installed\033[0m"
 fi
 
-cd $HOME/.config-desktop-home
+cd $HOME/"$SETUPDIR"
 
 ansible-playbook -i hosts site.yml -c local -K
