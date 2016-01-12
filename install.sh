@@ -9,7 +9,7 @@ then
     sudo pip install ansible
 
     echo "\033[0;32m Clone de la config d'installation.\033[0m"
-    sudo -u `whoami` -H git clone git@git.karbouin.net:kevin.arbouin/desktop-home.git $HOME/"$SETUPDIR"
+    sudo -u `whoami` -H git clone https://github.com/lifeman/ansible-setup-xubuntu.git $HOME/"$SETUPDIR"
 else
     echo "\033[0;32mThe folder $SETUPDIR is already installed\033[0m"
 fi
