@@ -1,0 +1,51 @@
+# An ansible playbook that sets up a tricked-out vim/zsh/tmux environment
+#
+---
+
+- name: Bootstrapping developer environment
+  hosts: all
+  user: user
+  sudo: yes
+
+  tasks:
+
+    - name: Install list of packages
+      apt: pkg={{item}} state=installed
+      with_items:
+       - tmux
+       - httpie
+       - vagrant
+       -
+# to manage password
+       - keepass2
+       - mono-complete
+       - docker.io
+# pour phpstorm
+       - openjdk-7-jre
+       - chromium-browser
+       - htop
+# nfs support for Vagrant
+       - nfs-kernel-server
+       - nfs-common
+       - portmap
+# nfs support for Vagrant
+       - nfs-kernel-server
+       - nfs-common
+       - portmap
+# dictionaty and read
+       - calibre
+       - goldendict
+   - pause: prompt="Ctrl+breack"
+
+  # Install PhpStorm
+   - name : create directory for PhpStorm
+     file: path=/opt/phpstorm-10 state=directory mode=0755
+
+   - name: "PhpStorm | Download application in zip"
+     sudo: false
+     get_url: url=https://download.jetbrains.com/webide/PhpStorm-10.0.3.tar.gz dest=/home/user/phpstorm.tar.gz validate_certs=False
+
+   - name: "PhpStorm | Unarchive application and move into folder /opt"
+     unarchive: src=/home/user/phpstorm.tar.gz dest=/opt/phpstorm-10
+     ignore_errors: true
+
