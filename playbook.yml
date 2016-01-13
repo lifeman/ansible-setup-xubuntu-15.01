@@ -12,8 +12,22 @@
     - name: Install list of packages
       apt: pkg={{item}} state=installed
       with_items:
+       - ntp
+       - curl
        - tmux
        - httpie
+       - svn
+       - git
+       - git-core
+       - git-flow
+       - git-email
+       - git-extras
+       - git-svn
+       - zsh
+       - skype
+       - vlc
+       - wireshark
+       - gimp
 # to manage password
        - keepass2
        - mono-complete
