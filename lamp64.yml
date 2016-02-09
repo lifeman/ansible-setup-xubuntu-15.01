@@ -1,0 +1,25 @@
+# An ansible playbook that sets up a tricked-out vim/zsh/tmux environment
+# ansible-playbook -i hosts playbook.yml -c local -K
+---
+
+- name: Bootstrapping developer environment
+  hosts: all
+  user: user
+  sudo: yes
+
+  tasks:
+
+    - name: Install list of packages
+      apt: pkg={{item}} state=installed
+      with_items:
+        - apache2
+        - php5-cli
+        - php5-mcrypt
+        - php5-fpm
+        - php5-mysql
+        - php5-curl
+        - php5-gd
+        - php5-memcached
+
+  # su
+
